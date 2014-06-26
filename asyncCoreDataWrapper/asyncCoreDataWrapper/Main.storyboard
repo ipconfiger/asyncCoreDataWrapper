@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="H5v-oh-UtZ">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Mm Main View Controller - What To Do?-->
+        <scene sceneID="gza-z5-3VT">
+            <objects>
+                <viewController id="PGK-Ue-7dV" customClass="mmMainViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7XC-8d-I0E">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="TiC-wT-MyR">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="PGK-Ue-7dV" id="6SE-UM-6c2"/>
+                                    <outlet property="delegate" destination="PGK-Ue-7dV" id="iZy-ke-fEV"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" id="kRL-Bw-O1V">
+                                <rect key="frame" x="0.0" y="66" width="320" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="1Kc-pr-UXM">
+                                        <rect key="frame" x="20" y="5" width="245" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="Iue-Fs-hvD">
+                                        <rect key="frame" x="278" y="9" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addNewClick:" destination="PGK-Ue-7dV" eventType="touchUpInside" id="x1j-km-fx4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="bsp-x5-Cpm" appends="YES" id="eKm-On-SuQ"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="What To Do?" id="NvH-82-Dcp">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="kfl-9a-oOd">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="DWD-6I-cEj">
+                                <rect key="frame" x="282" y="11" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showAddClick:" destination="PGK-Ue-7dV" eventType="touchUpInside" id="V9b-zI-g6v"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnAddEntity" destination="Iue-Fs-hvD" id="VAF-mS-e5P"/>
+                        <outlet property="mainTable" destination="TiC-wT-MyR" id="464-4O-sbr"/>
+                        <outlet property="txInputBox" destination="1Kc-pr-UXM" id="IsH-lR-QWs"/>
+                        <outlet property="viewInputBar" destination="kRL-Bw-O1V" id="rkr-ed-oD6"/>
+                        <segue destination="xOr-7Y-mbV" kind="push" identifier="showDetail" id="WUh-ru-b6K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J5a-TW-cD6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" id="bsp-x5-Cpm">
+                    <connections>
+                        <action selector="swipUpToHideInputBarAction:" destination="PGK-Ue-7dV" id="2hG-2h-rro"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="557" y="356"/>
+        </scene>
+        <!--Mm Content View Controller-->
+        <scene sceneID="hLA-Fi-NLV">
+            <objects>
+                <viewController id="xOr-7Y-mbV" customClass="mmContentViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lS7-DH-DFz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="CuI-nF-8Da">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="xOr-7Y-mbV" id="OgL-gk-sle"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="sB2-R8-YQ9">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="O6V-g8-Zp4">
+                            <connections>
+                                <action selector="doneEditAndGoBackClick:" destination="xOr-7Y-mbV" id="Gqg-o4-aAl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="txContent" destination="CuI-nF-8Da" id="V6m-d2-r4k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i1l-hF-yOb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="976" y="356"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wSh-ue-dNh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H5v-oh-UtZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yIB-ez-HPi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PGK-Ue-7dV" kind="relationship" relationship="rootViewController" id="EYR-s5-7tg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uoy-g2-0Yo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="31" y="356"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
