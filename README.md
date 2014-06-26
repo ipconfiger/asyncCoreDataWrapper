@@ -21,7 +21,7 @@ generate sub class in Editor > Create NSManagedContext SubClass
 
 ### 4. init instance in appDelegate
 
-```
+```objectivec
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[mmDAO instance] setupEnvModel:@"asyncCoreDataWrapper" DbFile:@"asyncCoreDataWrapper.sqlite"];
@@ -46,7 +46,7 @@ generate sub class in Editor > Create NSManagedContext SubClass
 
 ### 5. import catalog class in Prefix.pch file than you can use it anywhere
 
-```
+```objectivec
 #import <Availability.h>
 
 #ifndef __IPHONE_3_0
@@ -66,6 +66,40 @@ generate sub class in Editor > Create NSManagedContext SubClass
 ## How to use
 
 ### Create new object
+
+```objectivec
+Entity *task = [Entity createNew];
+task.task_id = @([self genId]);
+task.title = _txInputBox.text;
+task.detail = @"[not sure]";
+task.done = NO;
+```
+
+### Delete object
+
+```objectivec
+Entity *task = _dataArray[indexPath.row];
+[Entity delobject:task];
+```
+
+### Save Changes
+
+```objectivec
+[Entity save:^(NSError *error) {
+    _txInputBox.text = @"";
+    [self fetchEntitys];
+}];
+```
+
+### Fetch Data Array
+
+```
+[Entity filter:nil orderby:@[@"task_id"] offset:0 limit:0 on:^(NSArray *result, NSError *error) {
+    _dataArray = result;
+    [_mainTable reloadData]; //reload table view
+}];
+```
+
 
 
 
