@@ -93,6 +93,14 @@ Entity *task = _dataArray[indexPath.row];
 
 ### Fetch Data Array
 
+#### sync way:
+
+```
+NSArray *results = [Entity filter:@"task_id>10" orderby:@[@"task_id"] offset:0 limit:0];
+```
+
+#### async way:
+
 ```
 [Entity filter:nil orderby:@[@"task_id"] offset:0 limit:0 on:^(NSArray *result, NSError *error) {
     _dataArray = result;
@@ -101,5 +109,22 @@ Entity *task = _dataArray[indexPath.row];
 ```
 
 
+### Do complex operation asynchronously
 
+```
+[Entity async:^id(NSManagedObjectContext *ctx, NSString *className) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:className];
+        [request setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"task_id" ascending:YES]]];
+        NSError *error;
+        NSArray *dataArray = [ctx executeFetchRequest:request error:&error];
+        if (error) {
+            return error;
+        }else{
+            return dataArray;
+        }
 
+    } result:^(NSArray *result, NSError *error) {
+        _dataArray = result;
+        [_mainTable reloadData];
+    }];
+```
