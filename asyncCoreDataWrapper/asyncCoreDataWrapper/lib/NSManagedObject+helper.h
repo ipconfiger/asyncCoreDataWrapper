@@ -8,6 +8,7 @@
 
 typedef void(^ListResult)(NSArray* result, NSError *error);
 typedef void(^ObjectResult)(id result, NSError *error);
+typedef id(^AsyncProcess)(NSManagedObjectContext *ctx, NSString *className);
 
 #import <CoreData/CoreData.h>
 #import "mmDAO.h"
@@ -28,4 +29,6 @@ typedef void(^ObjectResult)(id result, NSError *error);
 +(void)one:(NSString*)predicate on:(ObjectResult)handler;
 
 +(void)delobject:(id)object;
+
++(void)async:(AsyncProcess)processBlock result:(ListResult)resultBlock;
 @end

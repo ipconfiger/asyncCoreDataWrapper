@@ -137,4 +137,38 @@
 
 }
 
++(void)async:(AsyncProcess)processBlock result:(ListResult)resultBlock{
+    NSString *className = [NSString stringWithUTF8String:object_getClassName(self)];
+    NSManagedObjectContext *ctx = [[mmDAO instance] createPrivateObjectContext];
+    [ctx performBlock:^{
+        id resultList = processBlock(ctx, className);
+        if (resultList) {
+            if ([resultList isKindOfClass:[NSError class]]) {
+                [[mmDAO instance].mainObjectContext performBlock:^{
+                    resultBlock(nil, resultList);
+                }];
+            }
+            if ([resultList isKindOfClass:[NSArray class]]) {
+                NSMutableArray *idArray = [[NSMutableArray alloc] init];
+                for (NSManagedObject *obj in resultList) {
+                    [idArray addObject:obj.objectID];
+                }
+                NSArray *objectIdArray = [idArray copy];
+                [[mmDAO instance].mainObjectContext performBlock:^{
+                    NSMutableArray *objArray = [[NSMutableArray alloc] init];
+                    for (NSManagedObjectID *robjId in objectIdArray) {
+                        [objArray addObject:[[mmDAO instance].mainObjectContext objectWithID:robjId]];
+                    }
+                    if (resultBlock) {
+                        resultBlock([objArray copy], nil);
+                    }
+                }];
+            }
+
+        }else{
+            resultBlock(nil, nil);
+        }
+    }];
+}
+
 @end

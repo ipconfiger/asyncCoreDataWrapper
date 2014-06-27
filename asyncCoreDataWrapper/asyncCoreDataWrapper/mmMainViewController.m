@@ -43,12 +43,28 @@ static BOOL notHidden = YES;
 }
 
 -(void)fetchEntitys{
+    /* 简单异步查询模式
     [Entity filter:nil orderby:@[@"task_id"] offset:0 limit:0 on:^(NSArray *result, NSError *error) {
         //
         _dataArray = result;
         [_mainTable reloadData];
     }];
+     */
+    [Entity async:^id(NSManagedObjectContext *ctx, NSString *className) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:className];
+        [request setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"task_id" ascending:YES]]];
+        NSError *error;
+        NSArray *dataArray = [ctx executeFetchRequest:request error:&error];
+        if (error) {
+            return error;
+        }else{
+            return dataArray;
+        }
 
+    } result:^(NSArray *result, NSError *error) {
+        _dataArray = result;
+        [_mainTable reloadData];
+    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
