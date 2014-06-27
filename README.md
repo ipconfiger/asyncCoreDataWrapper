@@ -1,7 +1,7 @@
 asyncCoreDataWrapper
 ====================
 
-# access Core Data in multi thread by the easy way!
+### 从此又能和CoreData愉快地玩耍啦（Easy way to play with CoreData）
 
 ## First, prepare CoreData environment:
 
