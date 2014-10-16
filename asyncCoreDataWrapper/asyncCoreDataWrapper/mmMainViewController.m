@@ -65,6 +65,8 @@ static BOOL notHidden = YES;
         _dataArray = result;
         [_mainTable reloadData];
     }];
+
+
 }
 
 -(void)viewDidAppear:(BOOL)animated{
