@@ -54,6 +54,7 @@
         }
         [fetchRequest setSortDescriptors:orderArray];
     }
+    [fetchRequest setSortDescriptors:orderArray];
     if (offset>0) {
         [fetchRequest setFetchOffset:offset];
     }

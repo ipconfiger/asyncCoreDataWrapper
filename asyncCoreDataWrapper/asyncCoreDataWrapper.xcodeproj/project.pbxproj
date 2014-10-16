@@ -42,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E293A59C19F00FC600FCD25B /* asyncCoreDataWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = asyncCoreDataWrapper.h; path = lib/asyncCoreDataWrapper.h; sourceTree = "<group>"; };
 		E2AB100E195B197A004E0AEE /* asyncCoreDataWrapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = asyncCoreDataWrapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2AB1011195B197A004E0AEE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E2AB1013195B197A004E0AEE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -190,6 +191,7 @@
 				E2AB104E195B1B17004E0AEE /* mmDAO.h */,
 				E2AB104F195B1B17004E0AEE /* NSManagedObject+helper.h */,
 				E2AB1050195B1B17004E0AEE /* NSManagedObject+helper.m */,
+				E293A59C19F00FC600FCD25B /* asyncCoreDataWrapper.h */,
 			);
 			name = lib;
 			sourceTree = "<group>";
