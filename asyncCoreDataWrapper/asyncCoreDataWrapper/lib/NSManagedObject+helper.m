@@ -51,10 +51,10 @@
                 orderDesc = [[NSSortDescriptor alloc] initWithKey:order
                                                         ascending:YES];
             }
+            [orderArray addObject:orderDesc];
         }
         [fetchRequest setSortDescriptors:orderArray];
     }
-    [fetchRequest setSortDescriptors:orderArray];
     if (offset>0) {
         [fetchRequest setFetchOffset:offset];
     }
